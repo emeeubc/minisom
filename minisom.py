@@ -692,6 +692,48 @@ class MiniSom(object):
             winmap[position] = Counter(winmap[position])
         return winmap
 
+    def plot(self):
+        
+        """
+        This function plots the nodes of the map in subplots.
+        
+        """
+        dummy,bmus_colours = colourmap_2D(colours_list = self.colours_list, x = self.x, y = self.y)
+
+def colourmap_2D(x, y, colours_list = 'default2'):
+
+    if colours_list == 'default1':
+
+        colours_list = np.array([[(229, 99, 153), (222, 110, 75)], 
+                                [(35, 31, 32), (240, 223, 173)]], dtype=np.uint8) 
+
+    elif colours_list == 'default2': #'PiBuRdPu'
+
+        colours_list = np.array([[(164, 3, 111), (22, 219, 147)], 
+                                [(4, 139, 168), (239, 234, 90)]], dtype=np.uint8) 
+
+    elif colours_list == 'pink_blue_red_purple': #'PiBuRdPu'
+
+        colours_list = np.array([[(229, 99, 153), (251, 35, 75)], 
+                                [(109, 169, 217), (64, 68, 99)]], dtype=np.uint8)  
+
+    elif colours_list == 'pinks': #'Pinks'
+
+        colours_list = np.array([[(210, 204, 161), (247, 134, 170)], 
+                                [(255, 168, 169), (161, 74, 118)]], dtype=np.uint8) 
+
+   #Convert array to image
+    colours_im = Image.fromarray(colours_list)
+
+    #Use linear interpolation to get Nx by Ny colours for plotting SOM results
+    from scipy.ndimage import zoom
+    colours = zoom(colours_im,(y/2,x/2,1),order=1)
+    #Convert to decimal representation
+    colours = colours/256
+
+    colours_flat = colours.transpose(1,0,2).reshape(x*y,3)
+
+    return colours, colours_flat        
 
 class TestMinisom(unittest.TestCase):
     def setUp(self):
