@@ -17,6 +17,9 @@ from numpy.testing import assert_almost_equal, assert_array_almost_equal
 from numpy.testing import assert_array_equal
 import unittest
 
+# for plot func
+import numpy as np
+
 """
     Minimalistic implementation of the Self Organizing Maps (SOM).
 """
@@ -704,23 +707,23 @@ def colourmap_2D(x, y, colours_list = 'default2'):
 
     if colours_list == 'default1':
 
-        colours_list = numpy.array([[(229, 99, 153), (222, 110, 75)], 
-                                [(35, 31, 32), (240, 223, 173)]], dtype=numpy.uint8) 
+        colours_list = np.array([[(229, 99, 153), (222, 110, 75)], 
+                                [(35, 31, 32), (240, 223, 173)]], dtype=np.uint8) 
 
     elif colours_list == 'default2': #'PiBuRdPu'
 
-        colours_list = numpy.array([[(164, 3, 111), (22, 219, 147)], 
-                                [(4, 139, 168), (239, 234, 90)]], dtype=numpy.uint8) 
+        colours_list = np.array([[(164, 3, 111), (22, 219, 147)], 
+                                [(4, 139, 168), (239, 234, 90)]], dtype=np.uint8) 
 
     elif colours_list == 'pink_blue_red_purple': #'PiBuRdPu'
 
-        colours_list = numpy.array([[(229, 99, 153), (251, 35, 75)], 
-                                [(109, 169, 217), (64, 68, 99)]], dtype=numpy.uint8)  
+        colours_list = np.array([[(229, 99, 153), (251, 35, 75)], 
+                                [(109, 169, 217), (64, 68, 99)]], dtype=np.uint8)  
 
     elif colours_list == 'pinks': #'Pinks'
 
-        colours_list = numpy.array([[(210, 204, 161), (247, 134, 170)], 
-                                [(255, 168, 169), (161, 74, 118)]], dtype=numpy.uint8) 
+        colours_list = np.array([[(210, 204, 161), (247, 134, 170)], 
+                                [(255, 168, 169), (161, 74, 118)]], dtype=np.uint8) 
 
    #Convert array to image
     colours_im = Image.fromarray(colours_list)
