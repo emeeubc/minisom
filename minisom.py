@@ -19,6 +19,8 @@ import unittest
 
 # for plot func
 import numpy as np
+from PIL import Image
+from scipy.ndimage import zoom
 
 """
     Minimalistic implementation of the Self Organizing Maps (SOM).
@@ -726,11 +728,9 @@ def colourmap_2D(x, y, colours_list = 'default2'):
                                 [(255, 168, 169), (161, 74, 118)]], dtype=np.uint8) 
 
    #Convert array to image
-    from PIL import Image
     colours_im = Image.fromarray(colours_list)
 
     #Use linear interpolation to get Nx by Ny colours for plotting SOM results
-    from scipy.ndimage import zoom
     colours = zoom(colours_im,(y/2,x/2,1),order=1)
     #Convert to decimal representation
     colours = colours/256
