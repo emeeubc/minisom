@@ -726,6 +726,7 @@ def colourmap_2D(x, y, colours_list = 'default2'):
                                 [(255, 168, 169), (161, 74, 118)]], dtype=np.uint8) 
 
    #Convert array to image
+    from PIL import Image
     colours_im = Image.fromarray(colours_list)
 
     #Use linear interpolation to get Nx by Ny colours for plotting SOM results
